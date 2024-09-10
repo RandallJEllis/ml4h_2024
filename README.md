@@ -31,6 +31,8 @@ python ml_experiments.py --task_id <task_id> --outcome <outcome> --output_path <
 
 
 ### Key Functions
+
+```
 def load_datasets(output_path):
     X = pd.read_parquet(f'{output_path}/X.parquet')
     y = np.load(f'{output_path}/y.npy')
@@ -53,7 +55,7 @@ def load_proteomics(data_path):
     df = df.dropna(subset=df.columns[1:], how='all')
 
     return df
-
+```
 
 These functions load datasets, proteomics data, and demographic information.
 
@@ -69,7 +71,8 @@ This file contains various utility functions for machine learning tasks, includi
 1. Encoding categorical variables
 2. Threshold selection
 3. Calculating performance metrics
-   
+
+```
 def encode_categorical_vars(df, catcols):
     # encode sex, ethnicity, APOEe4 alleles, education qualifications
     enc = OneHotEncoder(drop='if_binary')
@@ -138,7 +141,7 @@ def calc_results(y_true, y_probas, youden=False, beta=1, threshold=None):
         return res, threshold
     else:
         return res
-
+```
 
 ## Workflow
 1. Data is loaded and preprocessed.
